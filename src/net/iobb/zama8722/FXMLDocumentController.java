@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import net.iobb.zama8722.net.IPAddress;
 
 /**
  *
@@ -19,12 +20,13 @@ import javafx.scene.control.Label;
 public class FXMLDocumentController implements Initializable {
     
     @FXML
-    private Label label;
+    private Label ipaddress;
     
     @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+    private void getIPAddress(ActionEvent event) {
+        IPAddress ip = new IPAddress();
+        String a = ip.getIPAddress();
+        ipaddress.setText(a);
     }
     
     @Override

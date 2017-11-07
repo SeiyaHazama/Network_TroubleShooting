@@ -19,19 +19,25 @@ import net.iobb.zama8722.net.IPAddress;
  */
 public class FXMLDocumentController implements Initializable {
     
+    IPAddress ip = new IPAddress();
+    
     @FXML
     private Label ipaddress;
     
     @FXML
-    private void getIPAddress(ActionEvent event) {
-        IPAddress ip = new IPAddress();
+    private void getIPAddress() {
         String a = ip.getIPAddress();
         ipaddress.setText(a);
     }
     
+    @FXML
+    private void renewIPAddress(){
+        System.out.println(ip.renewIPAddress());
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        ipaddress.setText(ip.getIPAddress());
     }    
     
 }

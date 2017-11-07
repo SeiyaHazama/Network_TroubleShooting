@@ -5,6 +5,7 @@
  */
 package net.iobb.zama8722.net;
 
+import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
@@ -25,6 +26,31 @@ public class IPAddress {
             return ip;
         } catch (UnknownHostException e) {
             return null;
+        }
+    }
+
+    public boolean renewIPAddress() {
+        if (System.getProperty("os.name").toLowerCase().startsWith("mac")) {
+            int ret;
+            try {
+                ProcessBuilder pb = new ProcessBuilder("open", "/Applications/System Preferences.app");
+                Process p = pb.start();
+                p.waitFor();
+                ret = p.exitValue();
+            } catch (IOException | InterruptedException e) {
+                return false;
+            }
+
+            if (ret == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } else if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
+            //Windows
+            return true;
+        } else {
+            return false;
         }
     }
 

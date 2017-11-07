@@ -37,7 +37,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="再取得" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="button" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#renewIPAddress" text="再取得" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="実行" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="IPアドレス重複時に使用します" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>

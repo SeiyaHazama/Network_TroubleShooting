@@ -16,13 +16,19 @@ import java.net.UnknownHostException;
 public class IPAddress extends Thread {
     
     public String ret;
+    
+    public int thrmode;
 
     public IPAddress() {
 
     }
     
     public void run(){
-        this.renewIPAddress();
+        if (thrmode == 0) {
+            this.renewIPAddress();
+        } else {
+            //ping処理
+        }
     }
 
     public String getIPAddress() {

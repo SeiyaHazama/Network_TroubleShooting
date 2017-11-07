@@ -37,6 +37,7 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void renewIPAddress(){
+        ip.thrmode = 0;
         ip.start();
         renewIPNavigator.setText("しばらくお待ちください。");
         try {

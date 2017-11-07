@@ -26,7 +26,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-              <Button fx:id="button" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#getIPAddress" prefHeight="40.0" prefWidth="75.0" text="更新" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+              <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#getIPAddress" prefHeight="40.0" prefWidth="75.0" text="更新" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label fx:id="ipaddress" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="17.0" prefWidth="297.0" text="..." GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
@@ -37,9 +37,9 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="button" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#renewIPAddress" text="再取得" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#renewIPAddress" text="再取得" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="実行" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="IPアドレス重複時に使用します" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="renewIPNavigator" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="IPアドレス重複時に使用します" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>

@@ -25,6 +25,9 @@ public class FXMLDocumentController implements Initializable {
     private Label ipaddress;
     
     @FXML
+    private Label renewIPNavigator;
+    
+    @FXML
     private void getIPAddress() {
         String a = ip.getIPAddress();
         ipaddress.setText(a);
@@ -32,7 +35,10 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void renewIPAddress(){
-        System.out.println(ip.renewIPAddress());
+        renewIPNavigator.setText("しばらくお待ちください。");
+        String ret = ip.renewIPAddress();
+        this.getIPAddress();
+        renewIPNavigator.setText(ret);
     }
     
     @Override

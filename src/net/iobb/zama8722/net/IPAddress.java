@@ -8,6 +8,7 @@ package net.iobb.zama8722.net;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -29,7 +30,7 @@ public class IPAddress {
         }
     }
 
-    public boolean renewIPAddress() {
+    public String renewIPAddress() {
         if (System.getProperty("os.name").toLowerCase().startsWith("mac")) {
             int ret;
             try {
@@ -38,13 +39,13 @@ public class IPAddress {
                 p.waitFor();
                 ret = p.exitValue();
             } catch (IOException | InterruptedException e) {
-                return false;
+                return "処理に失敗しました。";
             }
 
             if (ret == 0) {
-                return true;
+                return "システム環境設定->ネットワーク より設定";
             } else {
-                return false;
+                return "処理に失敗しました。";
             }
         } else if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
             int ret;
@@ -53,18 +54,17 @@ public class IPAddress {
                 Process p = pb.start();
                 p.waitFor();
                 ret = p.exitValue();
-                System.out.println(ret);
             } catch (IOException | InterruptedException ex) {
-                return false;
+                return "処理に失敗しました。";
             }
 
             if (ret == 0) {
-                return true;
+                return "処理が完了しました。";
             } else {
-                return false;
+                return "処理に失敗しました。";
             }
         } else {
-            return false;
+            return "対応していないOSです。";
         }
     }
 

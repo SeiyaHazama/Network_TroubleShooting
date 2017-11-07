@@ -47,8 +47,22 @@ public class IPAddress {
                 return false;
             }
         } else if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
-            //Windows
-            return true;
+            int ret;
+            try {
+                ProcessBuilder pb = new ProcessBuilder("ipconfig", "/renew");
+                Process p = pb.start();
+                p.waitFor();
+                ret = p.exitValue();
+                System.out.println(ret);
+            } catch (IOException | InterruptedException ex) {
+                return false;
+            }
+
+            if (ret == 0) {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

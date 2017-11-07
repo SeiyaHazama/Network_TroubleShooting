@@ -7,6 +7,8 @@ package net.iobb.zama8722;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -35,10 +37,18 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private void renewIPAddress(){
+        ip.start();
         renewIPNavigator.setText("しばらくお待ちください。");
-        String ret = ip.renewIPAddress();
-        this.getIPAddress();
-        renewIPNavigator.setText(ret);
+        try {
+            ip.join();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        renewIPNavigator.setText(ip.ret);
+    }
+    
+    public void printIPNavigator(String message){
+        renewIPNavigator.setText(message);
     }
     
     @Override

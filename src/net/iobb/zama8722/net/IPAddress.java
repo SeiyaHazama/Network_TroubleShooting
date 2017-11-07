@@ -8,16 +8,21 @@ package net.iobb.zama8722.net;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.util.concurrent.TimeUnit;
 
 /**
  *
  * @author Seiya
  */
-public class IPAddress {
+public class IPAddress extends Thread {
+    
+    public String ret;
 
     public IPAddress() {
 
+    }
+    
+    public void run(){
+        this.renewIPAddress();
     }
 
     public String getIPAddress() {
@@ -30,41 +35,41 @@ public class IPAddress {
         }
     }
 
-    public String renewIPAddress() {
+    public void renewIPAddress() {
         if (System.getProperty("os.name").toLowerCase().startsWith("mac")) {
-            int ret;
+            int result = 1;
             try {
                 ProcessBuilder pb = new ProcessBuilder("open", "/Applications/System Preferences.app");
                 Process p = pb.start();
                 p.waitFor();
-                ret = p.exitValue();
+                result = p.exitValue();
             } catch (IOException | InterruptedException e) {
-                return "処理に失敗しました。";
+                this.ret = "処理に失敗しました。";
             }
 
-            if (ret == 0) {
-                return "システム環境設定->ネットワーク より設定";
+            if (result == 0) {
+                this.ret = "システム環境設定->ネットワーク より設定";
             } else {
-                return "処理に失敗しました。";
+                this.ret = "処理に失敗しました。";
             }
         } else if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
-            int ret;
+            int result = 1;
             try {
                 ProcessBuilder pb = new ProcessBuilder("ipconfig", "/renew");
                 Process p = pb.start();
                 p.waitFor();
-                ret = p.exitValue();
+                result = p.exitValue();
             } catch (IOException | InterruptedException ex) {
-                return "処理に失敗しました。";
+                this.ret = "処理に失敗しました。";
             }
 
-            if (ret == 0) {
-                return "処理が完了しました。";
+            if (result == 0) {
+                this.ret = "処理が完了しました。";
             } else {
-                return "処理に失敗しました。";
+                this.ret = "処理に失敗しました。";
             }
         } else {
-            return "対応していないOSです。";
+            this.ret = "対応していないOSです。";
         }
     }
 

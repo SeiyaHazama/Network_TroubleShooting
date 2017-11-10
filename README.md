@@ -1,11 +1,19 @@
 # Network_TroubleShooting
 
-## 開発
-NetBeansにて行いました。上げているデータはNetBeansプロジェクトそのものです。
+## Overview
+This is Simple Network touble shooting. This soft is can...
+* Get IP address
+* Renew IP address
+* Communication confirmation of you with input url server.
 
-## 概要
-IPアドレスの取得および再取得、Pingのシンプルなネットワークツールです。  
-Macの場合、IPアドレスの取得には`sudo`が必要なため、「システム環境設定」へ誘導する以外何もしていません。  
-機会があれば改善を試みますが、多分やりません（Windows使ってる友達宛に作った物だから）。
+## Installation
+This is Netbeans project file.
+You can import this project in Netbeans and edit this project.
 
-以上です。
+## Usage
+1. Clone this repository to local.
+2. Open for this project with NetBeans.
+3. And you can edit this project.
+4. If you want to action this program only, Jar file is in "dist" folder.
+
+Thank you watch this repository!!

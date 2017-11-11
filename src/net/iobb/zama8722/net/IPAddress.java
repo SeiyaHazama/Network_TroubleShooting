@@ -23,7 +23,7 @@ public class IPAddress extends Thread {
 
     }
 
-    public void run(int i) {
+    public void run() {
         if (thrmode == 0) {
             this.renewIPAddress();
         } else {

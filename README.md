@@ -18,4 +18,6 @@ You can import this project in Netbeans and edit this project.
 
 This program is developed by Java FX on Java 8. This program is needed addition java runtime.
 
+This program is can action on Windows and macOS.
+
 Thank you watch this repository!!

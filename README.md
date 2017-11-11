@@ -1,7 +1,7 @@
 # Network_TroubleShooting
 
 ## Overview
-This is Simple Network touble shooting. This soft is can...
+This is Simple Network trouble shooting. This soft is can...
 
 * Get IP address
 * Renew IP address

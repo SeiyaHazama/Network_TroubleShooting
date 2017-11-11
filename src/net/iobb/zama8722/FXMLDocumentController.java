@@ -7,12 +7,10 @@ package net.iobb.zama8722;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import net.iobb.zama8722.net.IPAddress;
 
 /**
@@ -20,23 +18,26 @@ import net.iobb.zama8722.net.IPAddress;
  * @author Seiya
  */
 public class FXMLDocumentController implements Initializable {
-    
-    IPAddress ip = new IPAddress();
-    
+
     @FXML
     private Label ipaddress;
-    
     @FXML
     private Label renewIPNavigator;
-    
+    @FXML
+    private Label pingNavigator;
+    @FXML
+    private TextField inputUrl;
+
     @FXML
     private void getIPAddress() {
+        IPAddress ip = new IPAddress();
         String a = ip.getIPAddress();
         ipaddress.setText(a);
     }
-    
+
     @FXML
-    private void renewIPAddress(){
+    private void renewIPAddress() {
+        IPAddress ip = new IPAddress();
         ip.thrmode = 0;
         ip.start();
         renewIPNavigator.setText("しばらくお待ちください。");
@@ -47,14 +48,34 @@ public class FXMLDocumentController implements Initializable {
         }
         renewIPNavigator.setText(ip.ret);
     }
-    
-    public void printIPNavigator(String message){
-        renewIPNavigator.setText(message);
+
+    @FXML
+    private void actionPing() {
+        IPAddress ip = new IPAddress();
+        ip.thrmode = 1;
+        ip.url = inputUrl.getText();
+        ip.start();
+        pingNavigator.setText("接続中");
+        try {
+            ip.join();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        pingNavigator.setText(ip.ret);
     }
     
+    @FXML
+    private void createReport(){
+        
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        IPAddress ip = new IPAddress();
+        ip.ret = "";
+        ip.thrmode = 0;
+        ip.url = "";
         ipaddress.setText(ip.getIPAddress());
-    }    
-    
+    }
+
 }

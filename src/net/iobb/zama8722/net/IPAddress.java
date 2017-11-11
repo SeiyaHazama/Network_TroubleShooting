@@ -14,20 +14,20 @@ import java.net.UnknownHostException;
  * @author Seiya
  */
 public class IPAddress extends Thread {
-    
+
     public String ret;
-    
+    public String url;
     public int thrmode;
 
     public IPAddress() {
 
     }
-    
-    public void run(){
+
+    public void run() {
         if (thrmode == 0) {
             this.renewIPAddress();
         } else {
-            //ping処理
+            this.getPing();
         }
     }
 
@@ -79,4 +79,42 @@ public class IPAddress extends Thread {
         }
     }
 
+    public void getPing() {
+        if (System.getProperty("os.name").toLowerCase().startsWith("mac")) {
+            int result = 1;
+            try {
+                ProcessBuilder pb = new ProcessBuilder("ping", this.url, "-c", "3");
+                Process p = pb.start();
+                p.waitFor();
+                result = p.exitValue();
+            } catch (IOException | InterruptedException e) {
+                this.ret = "実行エラー";
+            }
+
+            if (result == 0) {
+                this.ret = "接続完了";
+            } else {
+                this.ret = "接続エラー";
+            }
+        } else if (System.getProperty("os.name").toLowerCase().startsWith("windows")) {
+            int result = 1;
+            try {
+                ProcessBuilder pb = new ProcessBuilder("ping", this.url);
+                Process p = pb.start();
+                p.waitFor();
+                result = p.exitValue();
+            } catch (IOException | InterruptedException ex) {
+                this.ret = "処理に失敗しました。";
+            }
+
+            if (result == 0) {
+                this.ret = "処理が完了しました。";
+            } else {
+                this.ret = "処理に失敗しました。";
+            }
+        } else {
+            this.ret = "対応していないOSです。";
+        }
+
+    }
 }

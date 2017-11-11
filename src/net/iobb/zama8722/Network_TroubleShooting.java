@@ -24,6 +24,7 @@ public class Network_TroubleShooting extends Application {
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
+        stage.setTitle("簡易ネットワーク診断");
         stage.show();
     }
 

@@ -23,7 +23,7 @@ public class IPAddress extends Thread {
 
     }
 
-    public void run() {
+    public void run(int i) {
         if (thrmode == 0) {
             this.renewIPAddress();
         } else {
@@ -108,12 +108,12 @@ public class IPAddress extends Thread {
             }
 
             if (result == 0) {
-                this.ret = "処理が完了しました。";
+                this.ret = "接続完了";
             } else {
-                this.ret = "処理に失敗しました。";
+                this.ret = "接続失敗";
             }
         } else {
-            this.ret = "対応していないOSです。";
+            this.ret = "非対応";
         }
 
     }

@@ -55,22 +55,6 @@
                </font>
             </Label>
             <TextField fx:id="inputUrl" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" prefHeight="32.0" prefWidth="193.0" promptText="ここにURLを入力" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="レポート：" GridPane.rowIndex="4">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="reportNavigator" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="IP取得、Pingを実行してレポートします" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Button maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#createReport" text="レポート" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="レポートには、PingのURLを&#10;上テキストボックスに入力する必要があります" textFill="GREY" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Label>
             <Label fx:id="pingNavigator" alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" prefHeight="32.0" prefWidth="75.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />

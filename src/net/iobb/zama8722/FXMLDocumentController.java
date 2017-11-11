@@ -27,31 +27,33 @@ public class FXMLDocumentController implements Initializable {
     private Label pingNavigator;
     @FXML
     private TextField inputUrl;
+    
+    IPAddress ip;
 
     @FXML
     private void getIPAddress() {
-        IPAddress ip = new IPAddress();
+        ip = new IPAddress();
         String a = ip.getIPAddress();
         ipaddress.setText(a);
     }
 
     @FXML
     private void renewIPAddress() {
-        IPAddress ip = new IPAddress();
+        ip = new IPAddress();
         ip.thrmode = 0;
         ip.start();
         renewIPNavigator.setText("しばらくお待ちください。");
         try {
             ip.join();
         } catch (InterruptedException ex) {
-            ex.printStackTrace();
+            renewIPNavigator.setText("予期せぬエラー");
         }
         renewIPNavigator.setText(ip.ret);
     }
 
     @FXML
     private void actionPing() {
-        IPAddress ip = new IPAddress();
+        ip = new IPAddress();
         ip.thrmode = 1;
         ip.url = inputUrl.getText();
         ip.start();
@@ -59,19 +61,14 @@ public class FXMLDocumentController implements Initializable {
         try {
             ip.join();
         } catch (InterruptedException ex) {
-            ex.printStackTrace();
+            pingNavigator.setText("予期せぬエラー");
         }
         pingNavigator.setText(ip.ret);
-    }
-    
-    @FXML
-    private void createReport(){
-        
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        IPAddress ip = new IPAddress();
+        ip = new IPAddress();
         ip.ret = "";
         ip.thrmode = 0;
         ip.url = "";
